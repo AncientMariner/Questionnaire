@@ -1,6 +1,7 @@
 package org.xander.questionnaire;
 
-public class Content {
+public class Content implements Persistent{
+    private Long id;
     private String question;
     private String answer;
 
@@ -27,5 +28,15 @@ public class Content {
 
     public boolean exists() {
         return question != null && answer != null;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
 }
