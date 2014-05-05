@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DefaultController {
     @RequestMapping(value = "/")
     public String homePage() {
-        return "redirect:/questionnaire/start";
+        return "redirect:/questionnaire/init";
     }
 }

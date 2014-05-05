@@ -18,31 +18,25 @@
             </ul>
             <ul class="nav pull-right">
                 <li>
-                    <a href="${pageContext.request.contextPath}/questionnaire/about/">About</a>
-                </li>
-            </ul>
-            <ul class="nav">
-                <li>
-                    <a href="${pageContext.request.contextPath}/questionnaire/init/">Display the whole questionnaire list</a>
-                </li>
-            </ul>
-            <ul class="nav">
-                <li>
-                    <a href="${pageContext.request.contextPath}/questionnaire/list/">Back to Start page</a>
+                    <a href="${pageContext.request.contextPath}/questionnaire/init/">Back to Start page</a>
                 </li>
             </ul>
         </div>
     </div>
 </div>
-<div class="contentList">
-    <c:forEach items="${contentList}" var="content">
-        <span class="question">
-            <c:out value="${content.question}"/>
-        </span>
-        <span class="answer">
-            <c:out value="${content.answer}"/> <br/>
-        </span>
-    </c:forEach>
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <div class="welcome">
+                <ul class="contactList">
+                    <li>Here is the about page. Please contact me by:</li>
+                    <li>Email:</li>
+                    <li><a href="https://github.com/AncientMariner">Github: AncientMariner</a></li>
+                    <li>Twitter:</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

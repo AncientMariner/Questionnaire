@@ -5,6 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.xander.questionnaire.dao.Dao;
 import org.xander.questionnaire.model.Content;
 
+import java.util.List;
+
 @Service(value = "contentService")
 @Transactional
 public class TransactionalContentService implements ContentService {
@@ -20,5 +22,10 @@ public class TransactionalContentService implements ContentService {
     @Override
     public void addContent(Content content) {
         dao.saveOrUpdate(content);
+    }
+
+    @Override
+    public List<Content> getAll() {
+        return dao.getAll();
     }
 }

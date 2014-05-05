@@ -43,4 +43,12 @@ public class ContentServiceTest {
 
         verify(dao).saveOrUpdate(any(Content.class));
     }
+
+    @Test
+    public void getAllTest() {
+        Content content = mock(Content.class);
+
+        contentService.getAll();
+        verify(dao).getAll();
+    }
 }

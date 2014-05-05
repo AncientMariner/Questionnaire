@@ -23,9 +23,24 @@ public class ContentController {
     protected ContentController() {
     }
 
+    @RequestMapping(value = "/init", method = RequestMethod.GET)
+    public String init(ModelMap model) {
+        return "init";
+    }
+
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String about(ModelMap model) {
+        return "about";
+    }
+
+
     @RequestMapping(value = "/start", method = RequestMethod.GET)
-    public String start(ModelMap model) {
-//        model.addAttribute("start", new UserLoginForm());
+    public String start(ModelMap modelMap) {
+//        contentService.addContent(new Content());
+        modelMap.addAttribute("contentList", contentService.getAll());
         return "start";
     }
+//    TODO add new question/answer option
+//    TODO save answer
+//    TODO display list
 }

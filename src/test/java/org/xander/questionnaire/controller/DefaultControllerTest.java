@@ -15,7 +15,7 @@ public class DefaultControllerTest {
 
     @Test
     public void defaultControllerTest() {
-        String homepage = "redirect:/questionnaire/start";
+        String homepage = "redirect:/questionnaire/init";
         String actual = defaultController.homePage();
 
         assertEquals(homepage, actual);

@@ -3,6 +3,64 @@ html, body {
 }
 
 .welcome {
-    margin-top: 60px;
+    width: 780px;
+    text-align: center;
+    margin: 60px auto 10px;
+    padding: 15px;
+    background-color: #e1e1e1;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
 }
 
+.content {
+    margin: 20 auto;
+}
+
+.image {
+    width: 960px;
+    background-color: #e10800;
+    padding: 7px;
+    margin: 0 auto;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+}
+
+.contentList {
+    margin: 60px auto;
+    width: 580px;
+}
+
+.question{
+    width: 280px;
+    background-color: #e1d80b;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+}
+
+.answer {
+    width: 280px;
+    margin-left: 7px;
+    background-color: #b7d5e1;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+}
+
+.contactList {
+    text-align: left;
+}
