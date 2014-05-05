@@ -1,4 +1,4 @@
-package org.xander.questionnaire;
+package org.xander.questionnaire.model;
 
 import org.junit.Test;
 

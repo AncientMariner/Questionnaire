@@ -1,6 +1,6 @@
-package org.xander.questionnaire;
+package org.xander.questionnaire.model;
 
-public class Content implements Persistent{
+public class Content implements Persistent {
     private Long id;
     private String question;
     private String answer;

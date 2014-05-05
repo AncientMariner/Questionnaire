@@ -1,4 +1,4 @@
-package org.xander.questionnaire;
+package org.xander.questionnaire.model;
 
 public interface Persistent {
     Long getId();
