@@ -24,7 +24,7 @@
             </ul>
             <ul class="nav">
                 <li>
-                    <a href="${pageContext.request.contextPath}/questionnaire/start/">Start questionnaire</a>
+                    <a href="${pageContext.request.contextPath}/questionnaire/list/">Start questionnaire</a>
                 </li>
             </ul>
         </div>
