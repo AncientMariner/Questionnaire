@@ -52,17 +52,31 @@
         <fieldset>
             <form:form action="${pageContext.request.contextPath}/questionnaire/new/"
                        modelAttribute="contentForm" method="POST" >
-                <div class="formField">
-                    <p>Question <form:input path="question" type="text"/>
-                    </p>
-                </div>
-                <div class="formField">
-                    <p>Answer <form:input path="answer" type="text"/>
-                    </p>
-                </div>
-                <br/>
+                <table>
+                    <tr>
+                        <td>Question</td>
+                        <td>Answer</td>
+                    </tr>
+                    <tr>
+                        <td><form:input path="question" type="text"/></td>
+                        <td><form:input path="answer" type="text"/></td>
+                    </tr>
+                </table>
                 <input type="submit" value="Save new element" class="btn">
             </form:form>
+                <%--<div class="formField">--%>
+                    <%--<p>Question--%>
+                        <%--&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp--%>
+                        <%--Answer--%>
+                    <%--</p>--%>
+                <%--</div>--%>
+                <%--<div class="formField">--%>
+                    <%--<p><form:input path="question" type="text"/> <form:input path="answer" type="text"/>--%>
+                    <%--</p>--%>
+                <%--</div>--%>
+                <%--<br/>--%>
+                <%--<input type="submit" value="Save new element" class="btn">--%>
+            <%--</form:form>--%>
         </fieldset>
     </span>
 </div>
