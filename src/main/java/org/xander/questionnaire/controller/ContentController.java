@@ -13,6 +13,8 @@ import org.xander.questionnaire.model.Content;
 import org.xander.questionnaire.service.ContentService;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/questionnaire")
@@ -30,7 +32,12 @@ public class ContentController {
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     public String init() {
+        addDefaultContent();
         return "init";
+    }
+
+    private void addDefaultContent() {
+        contentService.addContent(new Content());
     }
 
     @RequestMapping(value = "/about", method = RequestMethod.GET)
@@ -39,10 +46,33 @@ public class ContentController {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String start(ModelMap modelMap) {
-        modelMap.addAttribute("contentList", contentService.getAll());
+    public String start(ModelMap modelMap, HttpSession session) {
+        List<Content> restrictedContentList = new ArrayList<>();
+
+        Integer numberOfElementsToDisplay = (contentService.getAll().size() >= 5) ? 5 : contentService.getAll().size();
+        if (session.getAttribute("number") != null) {
+            numberOfElementsToDisplay = (Integer) session.getAttribute("number");
+        }
+
+        for (int i = 0; i < numberOfElementsToDisplay; i++) {
+            restrictedContentList.add(contentService.getAll().get(i));
+        }
+        modelMap.addAttribute("contentList", restrictedContentList);
         modelMap.addAttribute("contentForm", new ContentForm());
         return "list";
+    }
+
+    @RequestMapping(value = "/more", method = RequestMethod.POST)
+    public String more(ModelMap modelMap, @ModelAttribute("number") Integer number, HttpSession session) {
+        int numberOfElementsToDisplay = contentService.getAll().size();
+
+        if (number * 2 < contentService.getAll().size()) {
+            numberOfElementsToDisplay = number * 2;
+        }
+        session.setAttribute("number", numberOfElementsToDisplay);
+        modelMap.addAttribute("contentList", contentService.getAll());
+        modelMap.addAttribute("contentForm", new ContentForm());
+        return "redirect:/questionnaire/list";
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)

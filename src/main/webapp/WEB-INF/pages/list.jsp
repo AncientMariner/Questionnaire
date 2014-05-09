@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <title>Questionnaire</title>
@@ -48,6 +49,11 @@
     <a href="${pageContext.request.contextPath}/questionnaire/new/">
         <h3 class="btn">add default one</h3> <br/>
     </a>
+    <form:form action="${pageContext.request.contextPath}/questionnaire/more/"
+                method="POST" >
+        <input type="hidden" name="number" value="${fn:length(contentList)}"/>
+        <input type="submit" value="More" class="btn">
+    </form:form>
     <span class="newElement">
         <fieldset>
             <form:form action="${pageContext.request.contextPath}/questionnaire/new/"
@@ -64,19 +70,6 @@
                 </table>
                 <input type="submit" value="Save new element" class="btn">
             </form:form>
-                <%--<div class="formField">--%>
-                    <%--<p>Question--%>
-                        <%--&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp--%>
-                        <%--Answer--%>
-                    <%--</p>--%>
-                <%--</div>--%>
-                <%--<div class="formField">--%>
-                    <%--<p><form:input path="question" type="text"/> <form:input path="answer" type="text"/>--%>
-                    <%--</p>--%>
-                <%--</div>--%>
-                <%--<br/>--%>
-                <%--<input type="submit" value="Save new element" class="btn">--%>
-            <%--</form:form>--%>
         </fieldset>
     </span>
 </div>

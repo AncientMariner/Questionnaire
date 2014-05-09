@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -49,8 +50,10 @@ public class ContentControllerTest {
     @Test
     public void startTest() {
         ModelMap modelMap = mock(ModelMap.class);
-        String list = contentController.start(modelMap);
-        verify(contentService).getAll();
+        HttpSession session = mock(HttpSession.class);
+        String list = contentController.start(modelMap,session);
+
+        verify(contentService, atLeastOnce()).getAll();
         assertEquals("list", list);
     }
 
