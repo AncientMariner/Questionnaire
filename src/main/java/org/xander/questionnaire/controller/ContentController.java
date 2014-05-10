@@ -32,17 +32,7 @@ public class ContentController {
 
     @RequestMapping(value = "/init", method = RequestMethod.GET)
     public String init() {
-        addDefaultContent();
         return "init";
-    }
-
-    private void addDefaultContent() {
-        contentService.addContent(new Content());
-    }
-
-    @RequestMapping(value = "/about", method = RequestMethod.GET)
-    public String about() {
-        return "about";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -50,7 +40,7 @@ public class ContentController {
         List<Content> restrictedContentList = new ArrayList<>();
 
         Integer numberOfElementsToDisplay = (contentService.getAll().size() >= 5) ? 5 : contentService.getAll().size();
-        if (session.getAttribute("number") != null) {
+        if (session.getAttribute("number") != null && ((Integer)session.getAttribute("number")) >= 5) {
             numberOfElementsToDisplay = (Integer) session.getAttribute("number");
         }
 
@@ -72,6 +62,7 @@ public class ContentController {
         session.setAttribute("number", numberOfElementsToDisplay);
         modelMap.addAttribute("contentList", contentService.getAll());
         modelMap.addAttribute("contentForm", new ContentForm());
+
         return "redirect:/questionnaire/list";
     }
 
