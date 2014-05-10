@@ -100,9 +100,9 @@ public class ContentController {
         for (Content element : listOfContents) {
             idsList.add(element.getId());
         }
+        final long defaultFirstIdToDisplay = 1L;
 
         modelMap.addAttribute("numberSet", idsList);
-        final long defaultFirstIdToDisplay = 1L;
         modelMap.addAttribute("content", contentService.getById(defaultFirstIdToDisplay));
         modelMap.addAttribute("contentList", listOfContents);
         modelMap.addAttribute("contentForm", new ContentForm());

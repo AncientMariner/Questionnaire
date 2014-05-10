@@ -42,11 +42,32 @@
             No data currently added
         </c:when>
         <c:otherwise>
+            <c:if test="${content.id ne 1}">
+                <a href="${pageContext.request.contextPath}/questionnaire/singleAnswer/${1}">&lt&lt</a>
+            &nbsp
+            </c:if>
+            <c:if test="${content.id gt 1}">
+                <a href="${pageContext.request.contextPath}/questionnaire/singleAnswer/${content.id-1}">&lt</a>
+            &nbsp&nbsp&nbsp
+            </c:if>
+
             <c:forEach items="${numberSet}" var="number">
                     <a href="${pageContext.request.contextPath}/questionnaire/singleAnswer/${number}">
+                        <%--<c:if test="${fn:length(numberSet) > 5}">--%>
+                        <%--</c:if>--%>
+                        <c:if test="${number eq content.id}">&gt</c:if>
                         <c:out value="${number}"/>
+                        <c:if test="${number eq content.id}">&lt</c:if>
                     </a>
             </c:forEach>
+            <c:if test="${fn:length(numberSet) gt 1 and content.id ne fn:length(numberSet)}">
+            &nbsp&nbsp&nbsp
+                <a href="${pageContext.request.contextPath}/questionnaire/singleAnswer/${content.id+1}">&gt</a>
+            </c:if>
+            <c:if test="${content.id ne fn:length(numberSet)}">
+            &nbsp
+                <a href="${pageContext.request.contextPath}/questionnaire/singleAnswer/${fn:length(numberSet)}">&gt&gt</a>
+            </c:if>
         </c:otherwise>
     </c:choose>
 </div>
