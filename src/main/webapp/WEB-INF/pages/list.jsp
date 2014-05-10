@@ -29,31 +29,27 @@
     <a href="${pageContext.request.contextPath}/questionnaire/new/">
         <h3 class="btn">add default one</h3> <br/>
     </a>
-    <form:form action="${pageContext.request.contextPath}/questionnaire/more/"
-                method="POST" >
+    <form:form action="${pageContext.request.contextPath}/questionnaire/more/" method="POST">
         <input type="hidden" name="number" value="${fn:length(contentList)}"/>
         <input type="submit" value="More" class="btn">
     </form:form>
 </div>
-
-<%--<span class="newElement">--%>
-        <div class="newElement">
-            <form:form action="${pageContext.request.contextPath}/questionnaire/new/"
-                       modelAttribute="contentForm" method="POST" >
-                <table>
-                    <tr>
-                        <td>Question</td>
-                        <td>Answer</td>
-                    </tr>
-                    <tr>
-                        <td><form:input path="question" type="text"/></td>
-                        <td><form:input path="answer" type="text"/></td>
-                    </tr>
-                </table>
-                <input type="submit" value="Save new element" class="btn">
-            </form:form>
-        </div>
-    <%--</span>--%>
+<div class="newElement">
+    <form:form action="${pageContext.request.contextPath}/questionnaire/new/"
+               modelAttribute="contentForm" method="POST">
+        <table>
+            <tr>
+                <td>Question</td>
+                <td>Answer</td>
+            </tr>
+            <tr>
+                <td><form:input path="question" type="text"/></td>
+                <td><form:input path="answer" type="text"/></td>
+            </tr>
+        </table>
+        <input type="submit" value="Save new element" class="btn">
+    </form:form>
+</div>
 <jsp:include page="footer.jsp"/>
 </body>
 </html>

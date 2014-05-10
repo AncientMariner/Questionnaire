@@ -86,4 +86,25 @@ public class ContentController {
         }
         return "redirect:/questionnaire/list";
     }
+
+
+    @RequestMapping(value = "/oneByOne", method = RequestMethod.GET)
+    public String oneByOneGet(ModelMap modelMap) {
+        modelMap.addAttribute("contentList", contentService.getAll());
+        modelMap.addAttribute("contentForm", new ContentForm());
+        return "oneByOne";
+    }
+
+    @RequestMapping(value = "/singleAnswer", method = RequestMethod.POST)
+    public String singleAnswer(@ModelAttribute("contentForm") ContentForm contentForm,
+                              BindingResult result,
+                              HttpSession session) {
+        if (!result.hasErrors()) {
+            Content content = contentService.getById(contentForm.getId());
+            content.setAnswer(contentForm.getAnswer());
+            contentService.addContent(content);
+            session.setAttribute("contentForm", contentForm);
+        }
+        return "redirect:/questionnaire/oneByOne";
+    }
 }

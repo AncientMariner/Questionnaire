@@ -9,7 +9,7 @@
             </ul>
             <ul class="nav pull-right">
                 <li>
-                    <a href="${pageContext.request.contextPath}/questionnaire/oneByone/">One by one</a>
+                    <a href="${pageContext.request.contextPath}/questionnaire/oneByOne/">One by one</a>
                 </li>
             </ul>
             <ul class="nav pull-right">

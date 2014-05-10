@@ -27,7 +27,7 @@ public abstract class AbstractHibernateDao<T extends Persistent> implements Dao<
 
     @Override
     public void saveOrUpdate(T content) {
-        getSession().save(content);
+        getSession().saveOrUpdate(content);
     }
 
     @Override
