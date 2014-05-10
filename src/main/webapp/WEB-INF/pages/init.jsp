@@ -9,27 +9,7 @@
     <%--<link href="${pageContext.request.contextPath}/WEB-INF/WEB-INF/resources/css/bootstrap.css" rel="stylesheet">--%>
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <ul class="nav pull-left">
-                <li>
-                    <a class="brand"> Questionnaire </a>
-                </li>
-            </ul>
-            <ul class="nav pull-right">
-                <li>
-                    <a href="${pageContext.request.contextPath}/questionnaire/about/">About</a>
-                </li>
-            </ul>
-            <ul class="nav">
-                <li>
-                    <a href="${pageContext.request.contextPath}/questionnaire/list/">Start questionnaire</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<jsp:include page="header.jsp"/>
 <div class="content">
     <div class="welcome">
         <h4> Please proceed with questionnaire by clicking the start questionnaire item on the top </h4>
@@ -39,5 +19,7 @@
              width=1280 height=960>
     </div>
 </div>
+<jsp:include page="footer.jsp"/>
+
 </body>
 </html>

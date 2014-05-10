@@ -9,27 +9,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <ul class="nav pull-left">
-                <li>
-                    <a class="brand"> Questionnaire </a>
-                </li>
-            </ul>
-            <ul class="nav pull-right">
-                <li>
-                    <a href="${pageContext.request.contextPath}/questionnaire/about/">About</a>
-                </li>
-            </ul>
-            <ul class="nav">
-                <li>
-                    <a href="${pageContext.request.contextPath}/questionnaire/init/">Back to Start page</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<jsp:include page="header.jsp"/>
 <div class="contentList">
     <c:choose>
         <c:when test="${empty contentList}">
@@ -73,5 +53,6 @@
         </fieldset>
     </span>
 </div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>
