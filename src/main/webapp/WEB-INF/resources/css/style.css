@@ -73,7 +73,10 @@ input[type=text] {
     height: 25px;
 }
 
-fieldset {
+.newElement {
+    width: 580px;
+    margin: 0px auto;
+    background-color: #c2bdff;
     -webkit-border-radius: 15px 15px 15px 15px;
     -moz-border-radius: 10px 10px 10px 10px;
     border-radius: 15px 15px 15px 15px;

@@ -34,8 +34,10 @@
         <input type="hidden" name="number" value="${fn:length(contentList)}"/>
         <input type="submit" value="More" class="btn">
     </form:form>
-    <span class="newElement">
-        <fieldset>
+</div>
+
+<%--<span class="newElement">--%>
+        <div class="newElement">
             <form:form action="${pageContext.request.contextPath}/questionnaire/new/"
                        modelAttribute="contentForm" method="POST" >
                 <table>
@@ -50,9 +52,8 @@
                 </table>
                 <input type="submit" value="Save new element" class="btn">
             </form:form>
-        </fieldset>
-    </span>
-</div>
+        </div>
+    <%--</span>--%>
 <jsp:include page="footer.jsp"/>
 </body>
 </html>
