@@ -75,7 +75,19 @@ public class ContentControllerTest {
         ModelMap modelMap = mock(ModelMap.class);
         String oneByOne = contentController.oneByOneGet(modelMap);
 
-        verify(contentService).getAll();
+        verify(contentService, atLeastOnce()).getAll();
+        verify(contentService).getById(anyLong());
+
+        assertEquals(oneByOne, "oneByOne");
+    }
+
+    @Test
+    public void oneByOneTestWithId() {
+        ModelMap modelMap = mock(ModelMap.class);
+        long id = 1L;
+        String oneByOne = contentController.oneByOneGet(id, modelMap);
+
+        verify(contentService, atLeastOnce()).getAll();
 
         assertEquals(oneByOne, "oneByOne");
     }
@@ -89,11 +101,12 @@ public class ContentControllerTest {
 
         when(contentService.getById(anyLong())).thenReturn(content);
 
-        String oneByOne = contentController.singleAnswer(contentForm, bindingResult, session);
+        long id = 1L;
+        String oneByOne = contentController.singleAnswer(contentForm, bindingResult, id, session);
 
         verify(contentService).getById(any(Long.class));
         verify(contentService).addContent(content);
 
-        assertEquals(oneByOne, "redirect:/questionnaire/oneByOne");
+        assertEquals(oneByOne, "redirect:/questionnaire/oneByOne/" + id);
     }
 }

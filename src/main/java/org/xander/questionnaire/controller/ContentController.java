@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.xander.questionnaire.forms.ContentForm;
@@ -14,7 +15,9 @@ import org.xander.questionnaire.service.ContentService;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/questionnaire")
@@ -90,21 +93,61 @@ public class ContentController {
 
     @RequestMapping(value = "/oneByOne", method = RequestMethod.GET)
     public String oneByOneGet(ModelMap modelMap) {
-        modelMap.addAttribute("contentList", contentService.getAll());
+
+        Set<Long> idsList = new HashSet<>();
+
+        List<Content> listOfContents = contentService.getAll();
+        for (Content element : listOfContents) {
+            idsList.add(element.getId());
+        }
+
+        modelMap.addAttribute("numberSet", idsList);
+        final long defaultFirstIdToDisplay = 1L;
+        modelMap.addAttribute("content", contentService.getById(defaultFirstIdToDisplay));
+        modelMap.addAttribute("contentList", listOfContents);
         modelMap.addAttribute("contentForm", new ContentForm());
         return "oneByOne";
     }
 
-    @RequestMapping(value = "/singleAnswer", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/oneByOne/{id}", method = RequestMethod.GET)
+    public String oneByOneGet(@PathVariable Long id, ModelMap modelMap) {
+
+        Set<Long> idsList = new HashSet<>();
+
+        for (Content element : contentService.getAll()) {
+            idsList.add(element.getId());
+        }
+
+        modelMap.addAttribute("numberSet", idsList);
+        modelMap.addAttribute("contentList", contentService.getAll());
+        modelMap.addAttribute("content", contentService.getById(id));
+        modelMap.addAttribute("contentForm", new ContentForm());
+        return "oneByOne";
+    }
+
+    @RequestMapping(value = "/singleAnswer/{id}", method = RequestMethod.POST)
     public String singleAnswer(@ModelAttribute("contentForm") ContentForm contentForm,
                               BindingResult result,
+                              @PathVariable Long id,
                               HttpSession session) {
         if (!result.hasErrors()) {
-            Content content = contentService.getById(contentForm.getId());
+            Content content = contentService.getById(id);
             content.setAnswer(contentForm.getAnswer());
             contentService.addContent(content);
             session.setAttribute("contentForm", contentForm);
         }
-        return "redirect:/questionnaire/oneByOne";
+        return "redirect:/questionnaire/oneByOne/" + id;
+    }
+
+    @RequestMapping(value = "/singleAnswer/{id}", method = RequestMethod.GET)
+    public String getCustomPage(@PathVariable Long id, HttpSession session) {
+        Content content = contentService.getById(id);
+        ContentForm contentForm = new ContentForm();
+        contentForm.setId(content.getId());
+        contentForm.setQuestion(content.getQuestion());
+        contentForm.setAnswer(content.getAnswer());
+        session.setAttribute("contentForm", contentForm);
+        return "redirect:/questionnaire/oneByOne/{id}";
     }
 }
