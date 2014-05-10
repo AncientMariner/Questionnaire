@@ -47,8 +47,10 @@ public class ContentController {
             numberOfElementsToDisplay = (Integer) session.getAttribute("number");
         }
 
-        for (int i = 0; i < numberOfElementsToDisplay; i++) {
-            restrictedContentList.add(contentService.getAll().get(i));
+        if (numberOfElementsToDisplay > 0) {
+            for (int i = 0; i < numberOfElementsToDisplay; i++) {
+                restrictedContentList.add(contentService.getAll().get(i));
+            }
         }
         modelMap.addAttribute("contentList", restrictedContentList);
         modelMap.addAttribute("contentForm", new ContentForm());
@@ -138,6 +140,11 @@ public class ContentController {
             session.setAttribute("contentForm", contentForm);
         }
         return "redirect:/questionnaire/oneByOne/" + id;
+    }
+
+    @RequestMapping(value = "/singleAnswer/", method = RequestMethod.POST)
+    public String singleAnswer() {
+        return "redirect:/questionnaire/oneByOne/";
     }
 
     @RequestMapping(value = "/singleAnswer/{id}", method = RequestMethod.GET)

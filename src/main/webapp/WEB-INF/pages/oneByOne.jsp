@@ -11,30 +11,32 @@
 <body>
 <jsp:include page="header.jsp"/>
 <div class="contentList">
-    <table>
-        <tr>
-            <td>Question</td>
-            <td>Answer</td>
-        </tr>
-            <form:form action="${pageContext.request.contextPath}/questionnaire/singleAnswer/${content.id}"
-                       modelAttribute="contentForm" method="POST">
-                <tr>
-                    <td>
-                        <span class="question">
-                            <input type="hidden" name="id" value="${content.id}"/>
-                            <input type="hidden" name="question" value="${content.question}"/>
-                            <c:out value="${content.question}"/>
-                        </span>
-                    </td>
-                <td>
-                    <span class="answerToUpdate">
-                    <form:input path="answer" type="text" value="${content.answer}"/>
-                        <input type="submit" value="Update element" class="btn-mini">
-                    </form:form>
-                     </span>
-                 </td>
+    <c:if test="${not empty numberSet}">
+        <table>
+            <tr>
+                <td>Question</td>
+                <td>Answer</td>
             </tr>
-    </table>
+                <form:form action="${pageContext.request.contextPath}/questionnaire/singleAnswer/${content.id}"
+                           modelAttribute="contentForm" method="POST">
+                    <tr>
+                        <td>
+                            <span class="question">
+                                <input type="hidden" name="id" value="${content.id}"/>
+                                <input type="hidden" name="question" value="${content.question}"/>
+                                <c:out value="${content.question}"/>
+                            </span>
+                        </td>
+                    <td>
+                        <span class="answerToUpdate">
+                        <form:input path="answer" type="text" value="${content.answer}"/>
+                            <input type="submit" value="Update element" class="btn-mini">
+                        </form:form>
+                         </span>
+                     </td>
+                </tr>
+        </table>
+    </c:if>
 </div>
 <div class="numbersList">
     <c:choose>
@@ -53,7 +55,10 @@
 
             <c:forEach items="${numberSet}" var="number">
                     <a href="${pageContext.request.contextPath}/questionnaire/singleAnswer/${number}">
-                        <%--<c:if test="${fn:length(numberSet) > 5}">--%>
+                        <%--<c:if test="${(content.id) ge 2 and (content.id + 1) le fn:length(numberSet)}">--%>
+                            <%--<c:if test="${fn:length(numberSet) gt 5}">--%>
+<%--todo display restricted number of pages, 1,2,3 ....(...3,4,5...)--%>
+                            <%--</c:if>--%>
                         <%--</c:if>--%>
                         <c:if test="${number eq content.id}">&gt</c:if>
                         <c:out value="${number}"/>
