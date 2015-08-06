@@ -3,11 +3,11 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="org.xander.questionnaire.model">
-    <class name="Content" table="content" lazy="true">
-        <id name="id" column="id">
-            <generator class="native"/>
-        </id>
-        <property name="question" />
-        <property name="answer" />
-    </class>
+    <!--<class name="Content" table="content" lazy="true">-->
+        <!--<id name="id" column="id">-->
+            <!--<generator class="native"/>-->
+        <!--</id>-->
+        <!--<property name="question" />-->
+        <!--<property name="answer" />-->
+    <!--</class>-->
 </hibernate-mapping>

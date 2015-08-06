@@ -1,8 +1,16 @@
 package org.xander.questionnaire.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Content implements Persistent {
+    @Id
+    @GeneratedValue
     private Long id;
+    @Column
     private String question;
+    @Column
     private String answer;
 
     public Content() {
